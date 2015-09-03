@@ -1,0 +1,84 @@
+<div id="post_show">
+  <h1>
+    <%= @post.title %>
+  </h1>
+  <p class="username">
+    <i class="fa fa-clock-o"></i>
+    Shared
+    about
+    <%= time_ago_in_words(@post.created_at) %> ago
+  </p>
+  <div class="clearfix">
+    <div class="post_image_description">
+      <%= image_tag @post.image.url(:medium) %>
+      <div class="description">
+        <%= simple_format(@post.description) %>
+      </div>
+    </div>
+    <div class="post_data">
+      <%= link_to " Vist Source", @post.link, class: "button" %>
+      <%= link_to like_post_path(@post), method: :get, class: "data" do %>
+        <i class="fa fa-thumbs-o-up"></i>
+        <%= pluralize(@post.get_upvotes.size, "Like") %>
+      <% end %>
+      <%= link_to dislike_post_path(@post), method: :get, class: "data" do %>
+        <i class="fa fa-thumbs-o-down"></i>
+        <%= pluralize(@post.get_downvotes.size, "Dislike") %>
+      <% end %>
+      <p class="data"></p>
+      <% if @post.user == current_user %>
+        
+
+        <%= link_to "Edit", edit_post_path(@post), class: "data" %>
+
+
+        <%= link_to "Delete", post_path(@post), method: :delete, data: { confirm: "Are you sure?" }, class: "data" %>
+      <% end %> 
+        
+       <h3><i class="fa fa-paper-plane"></i> Share on...</h3>
+
+       <a href="https://www.facebook.com/sharer/sharer.php?u=example.org" target="_blank">
+  <img src="http://uxrepo.com/static/icon-sets/brandico/svg/facebook-rect.svg" style="width:42px">
+</a>  
+
+<a href="https://plus.google.com/share?url=YOUR_URL_HERE"> 
+<img src="http://static1.squarespace.com/static/515ca365e4b02ae078527c95/t/530bc09fe4b04b1011b8728a/1393279168281/GooglePlus+Ben" style="width:42px">
+</a>
+
+
+<br /> 
+
+
+<a href="https://twitter.com/home?status=%23whingelist.com"> 
+<img src="http://www.juliehellergallery.com/JHG/Home_files/twitter-squared.svg" style="width:42px">
+</a> 
+
+<a href="mailto:?subject=Find all the stuff you want on and more&amp;body=windgelist.com"
+   title="Share by Email">
+  <img src="https://celebrideath.herokuapp.com/img/site/mail.svg" style="width:42px;height:50px">
+</a> 
+
+<br />
+
+      <a href="http://instagram.com/"> 
+       <img src="http://www.twicemeasured.com/images/insta_icon.gif" style="width:42px;height:43px">
+      </a>  
+
+      <a href="https://www.linkedin.com/cws/share?url=http%3A%2F%2Fgoogle.com">
+      <img src="http://www.strandmark.net/linkedin.png" style="width:42px">
+      </a>
+      <br />
+
+      
+    
+
+<h3><i class="fa fa-shopping-cart"></i> Possible sellers...</h3> 
+   <a href="http://www.amazon.co.uk/"> 
+     <img src="http://cdn5.thinkcomputers.org/wp-content/uploads/2013/11/amazon_logo_a_l.jpg" style="width:42px;height:43px">
+   </a> 
+
+   <a href="http://www.ebay.co.uk/"> 
+    <img src="http://www.dipon.de/index.html/ebay-logo-black.jpg" style="width:42px;height:43px">
+   </a>
+    </div>
+    
